@@ -17,8 +17,14 @@ navigator.tv.getTuners().then(function onsuccess(tuners) {
   
   //リンクして再生
   var video = document.getElementById("video-player");
-  video.srcObject = tuner.stream;
+  
+  //エミュレータ環境
+  video.src = tuner.stream;
   video.play();
+  
+  //本番環境
+//  video.srcObject = tuner.stream;
+
 /*
   // Set the 'oncurrentsourcechanged' event handler.
   tuner.oncurrentsourcechanged = function oncurrentsourcechanged(event) {
